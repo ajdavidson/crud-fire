@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://assets.materialup.com/uploads/008bcf7d-3295-4365-822e-50946fb6b7ec/preview.png"
+          type="image/gif" sizes="16x16">
+    <title>[CRUD] Fire AJD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lux/bootstrap.min.css"
+          integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">
+</head>
+<body>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">cbv</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home
+                        <span class="visually-hidden">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#firebase">Firebase</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#crud">CRUD</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#app">To-DO List App</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br><br>
+
+<!-- INTRO -->
+<div class="container">
+    <h1>CRUD App with Firebase</h1>
+    <br>
+    <hr>
+    <br>
+    <h2 id="firebase">Firebase</h2>
+    <p class="lead">Firebase is a platform developed by Google for creating mobile and web applications.</p>
+    <p>Firebase is a Backend-as-a-Service (Baas). It provides developers with a variety of tools and services to help
+        them develop quality apps, grow their user base, and earn profit.</p>
+    <p class="lead"> Firebase's Key Features
+    <ul>
+        <li>Authentication</li>
+        <li><a class="text-info" href="#firestore">Firestore database</a></li>
+        <li>Hosting</li>
+        <li>Test lab</li>
+        <li>Notifications</li>
+    </ul>
+    </p>
+    <br>
+    <hr>
+    <br>
+    <h3 id="firestore" class="text-info"> Firestore
+        <small class="text-muted"> Database</small>
+    </h3>
+    <p>The Firebase Firestore Database lets you build rich, collaborative applications by allowing secure access to the
+        database directly from client-side code. Data is persisted locally, and even while offline, realtime events
+        continue to fire, giving the end user a responsive experience.</p>
+
+    <h4>MODULES</h4>
+    <p class="lead">Modules are small units of independent, reusable code that is desired to be used as the building
+        blocks in creating a non-trivial Javascript application. </p>
+    <!-- Accordion -->
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    getFirestore
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                 data-bs-parent="#accordionExample" style="">
+                <div class="accordion-body">
+                    <strong>Import Firebase access</strong>
+                    Go to the QuickStart Guide https://firebase.google.com/docs/firestore/quickstart and follow the
+                    create a Cloud Firestore database section.
+                    <br><code>
+                    import app from "./index.js";
+                    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
+
+                    const db = getFirestore(app);
+                </code>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    collection, addDoc
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                 data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>[Create]rud Operation</strong>
+                    Find more information about those modules on the Firestore
+                    https://firebase.google.com/docs/firestore/manage-data/add-data#add_a_document official Docs site.
+                    <br><code>
+                    import {collection, addDoc} from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
+
+                    const saveTask = (title, description) =>
+                    addDoc(collection(db, "tasks"), {
+                    title,
+                    description,
+                    });
+                </code>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    getDocs, onSnapshot
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                 data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>c[Read]ud Operation</strong>
+                    Find more information about those modules on the Firestore
+                    https://firebase.google.com/docs/firestore/query-data/get-data official Docs site.
+                    <br><code>
+                    import {getDocs, onSnapshot} from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
+
+                    const getTasks = () => getDocs(collection(db, "tasks"));
+                    const onGetTasks = (callback) => onSnapshot(collection(db, "tasks"), callback);
+                    });
+                </code>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    getDoc, doc, updateDoc
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                 data-bs-parent="#accordionExample" style="">
+                <div class="accordion-body">
+                    <strong>cr[Update]d Operation</strong>
+                    Find more information about those modules on the Firestore
+                    https://firebase.google.com/docs/firestore/manage-data/add-data#update-data official Docs site.
+                    <br><code>
+                    import {getDoc, doc, updateDoc} from
+                    "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
+
+                    const getTask = (id) => getDoc(doc(db, "tasks", id));
+                    const updateTask = (id, updateTask) => updateDoc(doc(db, "tasks", id), updateTask);
+                    });
+                </code>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    deleteDoc
+                </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                 data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>cru[Delete] Operation</strong>
+                    Idds the apance, as well as ustom CSS or oting that just about any HTML can go within the
+                    <br><code>
+                    import {deleteDoc} from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
+
+                    const deleteTask = (id) => deleteDoc(doc(db, "tasks", id));
+                    });
+                </code>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+</div>
+
+<!-- Crud Tab -->
+<div class="container">
+    <h2>CRUD</h2>
+    <p id="crud" class="lead">CRUD is an acronym that comes from the world of computer programming and refers to the
+        four functions that are considered necessary to implement a persistent storage application: create, read, update
+        and delete. </p>
+    <div class="row">
+        <div class="col-md-6">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#create">Create</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#read">Read</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#update">Update</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#delete">Delete</a>
+                </li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade show active" id="create">
+                    <br>
+                    <p> The create function allows users to create a new record in the database. In the SQL relational
+                        database application, the Create function is called INSERT.</p>
+                </div>
+                <div class="tab-pane fade show" id="read">
+                    <br>
+                    <p>The read function is similar to a search function. It allows users to search and retrieve
+                        specific records in the table and read their values.</p>
+                </div>
+                <div class="tab-pane fade show" id="update">
+                    <br>
+                    <p>The update function is used to modify existing records that exist in the database. To fully
+                        change a record, users may have to modify information in multiple fields.</p>
+                </div>
+                <div class="tab-pane fade show" id="delete">
+                    <br>
+                    <p>The delete function allows users to remove records from a database that is no longer needed. Both
+                        SQL and Oracle HCM Cloud have a delete function that allows users to delete one or more records
+                        from the database.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<hr>
+<br>
+
+<!-- TASK SECTION -->
+<div id="app" class="container p-3">
+    <h1>To-Do List CRUD App</h1>
+    <hr>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card border-primary bg-light">
+                <div class="card-header" id="card-header">
+                    Create: Task Information Card
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title" id="card-title">
+                        Add title and description</h5>
+                    <hr>
+                    <form id="task-form">
+                        <div class="form-group">
+                            <input type="text"
+                                   id="task-title"
+                                   class="form-control"
+                                   placeholder="Task Title"
+                                   autofocus>
+                        </div>
+                        <div class="form-group">
+                    <textarea id="task-description"
+                              rows="3"
+                              class="form-control"
+                              placeholder="Task Description"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="btn-task-form">
+                            Save
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Task Card -->
+        <div class="col-md-6" id="task-card">
+        </div>
+    </div>
+
+</div>
+
+
+<!--     <div class="modal" id="deleteModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>This opertation connot be undone</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary btn.delete">Delete</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+
+<script type="module" src="index.js"></script>
+<script type="module" src="main.js"></script>
+
+</body>
+</html>
